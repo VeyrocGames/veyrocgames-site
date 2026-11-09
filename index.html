@@ -1,9 +1,488 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Veyroc Games</title><style>
-:root{--bg:#0c0a14;--fg:#eeeaff;--mut:rgba(225,215,255,.62);--line:rgba(255,255,255,.1);--link:#9fd8ff;color-scheme:dark}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:32px max(18px,env(safe-area-inset-left)) 48px max(18px,env(safe-area-inset-right))}
-.wrap{max-width:720px;margin:0 auto}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
-.brand{font-weight:900;font-size:20px;letter-spacing:.5px}nav a{color:var(--link);margin-left:14px;text-decoration:none;font-weight:600}
-h1{font-size:28px;line-height:1.2;margin:28px 0 4px}h2{font-size:18px;margin:26px 0 6px}p{margin:0 0 12px;overflow-wrap:anywhere}.u{color:var(--mut);font-size:14px}
-a{color:var(--link)}section+section{border-top:1px solid var(--line);margin-top:40px;padding-top:8px}footer{margin-top:40px;color:var(--mut);font-size:14px}
- .hero{text-align:center;padding:60px 0} .hero h1{font-size:40px}</style></head>
-<body><div class="wrap hero"><h1>Veyroc Games</h1><p>Mobile games.</p><p><a href="bassburst/">Bass Burst</a> · <a href="bassburst/privacy.html">Privacy Policy</a> · <a href="bassburst/terms.html">Terms of Use</a></p><p class="u">Contact: info@veyrocgames.com</p></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Veyroc Games">
+<meta property="og:description" content="Independent mobile game studio in Istanbul.">
+<meta property="og:url" content="https://veyrocgames.com/">
+<title>Veyroc Games</title>
+<meta name="description" content="Veyroc is an independent mobile game studio in Istanbul.">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: one white page. Sticky minimal nav, a large typographic hero beside a composed "tile" artwork,
+   then About, What we do, How we work, Contact, footer. Black ink with the coral dot from the logo as the only accent. */
+:root{
+  --white:#ffffff;
+  --mist:#f5f4f1;      /* quiet panels */
+  --ink:#111114;       /* logo black, headings */
+  --body:#3d3f45;
+  --muted:#7a7c82;
+  --line:#e8e6e1;
+  --coral:#f0876a;     /* the dot */
+  --font-display:"Nunito","Nunito Sans",ui-rounded,system-ui,sans-serif;
+  --font-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-ja:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--body);font:400 17px/1.7 var(--font-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);color:var(--ink);margin:0;text-wrap:balance}
+.dot{color:var(--coral)}
+.label{display:inline-flex;align-items:center;gap:10px;font:800 12.5px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.label::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--coral)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:40px;font:700 16px var(--font-body);text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{box-shadow:0 12px 26px rgba(17,17,20,.22)}
+.btn-ghost{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn svg{width:18px;height:18px}
+
+/* NAV */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow .3s}
+.nav.solid{box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:82px}
+.nav .logo img{height:34px;width:auto}
+.menu{display:flex;align-items:center;gap:34px}
+.menu a{font:700 15px var(--font-body);text-decoration:none;color:var(--body)}
+.menu a:hover{color:var(--ink)}
+.menu .btn{padding:11px 22px;font-size:15px;color:#fff}
+.burger{display:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--mist);color:var(--ink);cursor:pointer}
+.burger svg{width:22px;height:22px}
+@media (max-width:820px){
+  .burger{display:grid;place-items:center}
+  .menu{position:absolute;top:82px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:6px max(24px,env(safe-area-inset-right,0px)) 22px max(24px,env(safe-area-inset-left,0px));background:#fff;box-shadow:0 20px 30px rgba(0,0,0,.06);display:none}
+  .menu.open{display:flex}
+  .menu a{padding:16px 0;border-bottom:1px solid var(--line)}
+  .menu .btn{margin-top:16px;justify-content:center;border-bottom:0}
+}
+
+/* HERO */
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding-block:22px 100px}
+.hero h1{font-size:clamp(48px,7vw,96px);line-height:1;font-weight:800;letter-spacing:-.02em;margin-top:24px}
+.hero p{max-width:500px;margin:28px 0 36px;font-size:20px;color:var(--body)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero .in{opacity:0;transform:translateY(16px);animation:in .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes in{to{opacity:1;transform:none}}
+
+/* tile artwork: a calm composition of rounded blocks */
+.art{position:relative;aspect-ratio:1;max-width:500px;width:100%;justify-self:end}
+.art .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:4%}
+.art b{border-radius:26%;background:var(--mist);animation:pop .8s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i) * 60ms + .2s)}
+.art b.k{background:var(--ink)}
+.art b.c{background:var(--coral)}
+.art b.o{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
+.art b.w{grid-column:span 2;border-radius:999px}
+.art b.t{grid-row:span 2;border-radius:999px}
+.art .float{position:absolute;width:15%;aspect-ratio:1;border-radius:50%;background:var(--coral);right:-3%;top:-3%;box-shadow:0 18px 30px rgba(240,135,106,.35);animation:bob 5s ease-in-out infinite}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+@keyframes bob{50%{transform:translateY(-12px)}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-block:14px 80px;gap:50px}.art{justify-self:center;max-width:420px}}
+
+/* SECTIONS */
+section{padding-block:110px}
+.rule{border-top:1px solid var(--line)}
+.head{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start}
+.head h2{font-size:clamp(36px,4.6vw,58px);line-height:1.08;font-weight:800;letter-spacing:-.015em;margin-top:18px}
+.head .text p{margin:0 0 18px;max-width:600px}
+.head .text p.big{font-size:22px;line-height:1.55;color:var(--ink)}
+@media (max-width:900px){.head{grid-template-columns:1fr;gap:26px}section{padding-block:80px}}
+
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid var(--line)}
+.fact{padding:30px 30px 0 0}
+.fact+.fact{padding-left:30px;border-left:1px solid var(--line)}
+.fact b{display:block;font:800 32px/1.15 var(--font-display);color:var(--ink)}
+.fact span{font-size:15px;color:var(--muted)}
+@media (max-width:700px){.facts{grid-template-columns:1fr}.fact,.fact+.fact{padding:24px 0;border-left:0;border-bottom:1px solid var(--line)}}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
+.card{padding:30px 26px 32px;border-radius:24px;background:var(--mist);transition:background .3s,transform .3s}
+.card:hover{background:#efede8;transform:translateY(-4px)}
+.card .ic{width:52px;height:52px;border-radius:16px;background:#fff;display:grid;place-items:center;margin-bottom:22px}
+.card .ic svg{width:26px;height:26px}
+.card h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.card p{margin:0;font-size:15.5px;color:var(--body)}
+@media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+.steps{list-style:none;margin:60px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.steps li{position:relative;padding:34px 26px 0 0;counter-increment:s;border-top:2px solid var(--line)}
+.steps li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.steps li:last-child::before{background:var(--coral)}
+.steps small{font:800 12px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.steps small::before{content:"0" counter(s) " · "}
+.steps h3{font-size:22px;font-weight:800;margin:8px 0 8px}
+.steps p{margin:0;font-size:15.5px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;row-gap:40px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* GAMES */
+.gtitle{text-align:center;margin-bottom:56px}
+.gtitle h2{font-size:clamp(36px,4.6vw,58px);line-height:1.05;font-weight:800;letter-spacing:-.015em}
+.gtitle i{display:block;width:56px;height:4px;border-radius:2px;background:var(--coral);margin:22px auto 0}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),620px));justify-content:center;gap:40px}
+.gcard{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cover{position:relative;display:block;width:100%;aspect-ratio:1400/939;border-radius:24px;overflow:hidden;background:#140b2e;box-shadow:0 26px 50px rgba(30,10,60,.22)}
+.cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cover::after{content:"";position:absolute;inset:0;background:rgba(10,4,20,.12);transition:background .3s}
+.cover:hover img{transform:scale(1.04)}
+.cover:hover::after{background:rgba(10,4,20,.28)}
+.pbtn{position:absolute;left:50%;top:50%;z-index:2;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);transition:transform .25s,background .25s}
+.pbtn svg{width:32px;height:32px;margin-left:5px;fill:#fff}
+.cover:hover .pbtn{transform:scale(1.1);background:var(--coral);box-shadow:0 12px 30px rgba(240,135,106,.5)}
+.gicon{width:96px;height:96px;margin-top:26px;z-index:3;position:relative;border-radius:24px;box-shadow:0 12px 28px rgba(20,10,40,.3),0 0 0 4px #fff}
+.gcard h3{font-size:26px;font-weight:800;margin-top:18px}
+.genre{font-weight:600;color:var(--muted);margin-top:2px}
+.gdesc{margin:16px 0 0;max-width:560px}
+.playnow{margin-top:24px}
+.badges{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.badge{position:relative;display:flex;align-items:center;gap:9px;height:50px;padding:0 16px 0 12px;border-radius:11px;background:#000;color:#fff;cursor:default;box-shadow:0 0 0 1px #a6a6a6 inset}
+.badge svg{width:24px;height:24px;flex:none}
+.badge span{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.badge small{font:600 9.5px/1 -apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.02em}
+.badge b{font:600 19px/1.1 -apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:-.01em;margin-top:2px}
+.badge .soon{position:absolute;top:-10px;right:-8px;padding:4px 9px;border-radius:12px;background:var(--coral);color:#fff;font:800 10.5px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 10px rgba(240,135,106,.4)}
+
+/* CONTACT FORM */
+.formcard{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field>label{font:600 15px var(--font-body);color:var(--muted)}
+.field input,.field textarea,.sel>button{width:100%;border:0;border-radius:14px;background:#f1f1f4;padding:18px 20px;font:600 16px var(--font-body);color:var(--ink);outline:none;transition:box-shadow .2s,background .2s}
+.field textarea{min-height:160px;resize:vertical}
+.field input:focus,.field textarea:focus,.sel>button:focus-visible{background:#fff;box-shadow:0 0 0 2px var(--coral)}
+.field.bad input,.field.bad textarea,.sel.bad>button{box-shadow:0 0 0 2px #e05a4e}
+.sel{position:relative}
+.sel>button{display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;font-weight:800}
+.sel>button svg{width:18px;height:18px;transition:transform .2s;flex:none}
+.sel.open>button svg{transform:rotate(180deg)}
+.sel ul{position:absolute;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:#f1f1f4;border-radius:14px;box-shadow:0 16px 30px rgba(17,17,20,.12);display:none;z-index:5}
+.sel.open ul{display:block}
+.sel li button{width:100%;padding:12px 14px;border:0;border-radius:10px;background:none;text-align:left;font:600 16px var(--font-body);color:var(--body);cursor:pointer}
+.sel li button:hover,.sel li button:focus-visible{background:#fff;color:var(--ink)}
+.send{align-self:center;min-width:150px;justify-content:center;border:0;cursor:pointer;background:var(--coral);color:#fff;font:800 16px var(--font-body);letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 24px rgba(240,135,106,.35)}
+.fnote{text-align:center;font-size:15px;color:var(--muted);margin:0}
+.fnote a{color:var(--ink);font-weight:700;text-decoration-color:var(--coral);text-underline-offset:3px}
+.fmsg{text-align:center;font-weight:700;margin:0;min-height:1.6em}
+.fmsg.ok{color:#2f8a5b}.fmsg.err{color:#d0493d}
+
+footer{padding-block:50px 40px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+footer img{height:26px;width:auto}
+footer nav{display:flex;gap:24px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+html[lang="ja"]{--font-display:var(--font-ja);--font-body:var(--font-ja)}
+html[lang="ja"] h1,html[lang="ja"] h2{letter-spacing:0;line-height:1.2}
+html[lang="ja"] h1{font-size:clamp(40px,5.6vw,76px)}
+html[lang="ja"] .label,html[lang="ja"] .steps small{letter-spacing:.08em}
+html[lang="ja"] body{line-break:strict;word-break:normal}
+.lang{position:relative}
+.lang>button{display:flex;align-items:center;gap:8px;padding:10px 14px;border:0;border-radius:30px;background:var(--mist);color:var(--ink);font:800 14px var(--font-body);cursor:pointer}
+.lang>button svg{width:18px;height:18px}
+.lang ul{position:absolute;right:0;top:calc(100% + 8px);min-width:170px;margin:0;padding:6px;list-style:none;background:#fff;border-radius:18px;box-shadow:0 18px 40px rgba(17,17,20,.14),0 0 0 1px var(--line);display:none;z-index:70}
+.lang.open ul{display:block}
+.lang li button{width:100%;display:flex;justify-content:space-between;gap:14px;padding:11px 14px;border:0;border-radius:12px;background:none;font:700 15px var(--font-body);color:var(--body);cursor:pointer;text-align:left}
+.lang li button:hover{background:var(--mist);color:var(--ink)}
+.lang li button[aria-current="true"]{color:var(--ink)}
+.lang li button[aria-current="true"]::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);align-self:center}
+.flag{flex:none;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08);display:inline-block}
+.flag svg,.lang>button .flag svg{width:100%;height:100%;display:block}
+.lang>button svg.g{display:none}
+.lang li button{justify-content:flex-start;align-items:center}
+.lang li button[aria-current="true"]::after{margin-left:auto}
+.lang li span{font-family:"Nunito Sans","Hiragino Sans","Noto Sans JP",sans-serif}
+.navr{display:flex;align-items:center;gap:12px}
+@media (max-width:820px){.lang ul{right:-56px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero .in{opacity:1;transform:none}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Veyroc home"><img src="img/logo-black.png" alt="veyroc" width="1354" height="322"></a>
+    <div class="navr">
+    <div class="lang" id="lang"><button type="button" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language"><svg class="g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><i class="flag" id="langFlag"></i><b id="langCode">EN</b></button>
+      <ul id="langList"><li><button type="button" data-l="en"><i class="flag"><svg viewBox="0 0 60 30"><clipPath id="fgb"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="fgb2"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fgb)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#fgb2)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg></i><span>English</span></button></li><li><button type="button" data-l="tr"><i class="flag"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#E30A17"/><circle cx="11.25" cy="10" r="5" fill="#fff"/><circle cx="12.5" cy="10" r="4" fill="#E30A17"/><path fill="#fff" d="M14.78 10l4.52-1.47-2.8 3.85V7.62l2.8 3.85z"/></svg></i><span>Türkçe</span></button></li><li><button type="button" data-l="de"><i class="flag"><svg viewBox="0 0 5 3"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg></i><span>Deutsch</span></button></li><li><button type="button" data-l="es"><i class="flag"><svg viewBox="0 0 750 500"><rect width="750" height="500" fill="#AA151B"/><rect y="125" width="750" height="250" fill="#F1BF00"/></svg></i><span>Español</span></button></li><li><button type="button" data-l="ja"><i class="flag"><svg viewBox="0 0 900 600"><rect width="900" height="600" fill="#fff"/><circle cx="450" cy="300" r="180" fill="#BC002D"/></svg></i><span>日本語</span></button></li></ul></div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="menu" id="menu">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#what" data-i18n="nav.what">What we do</a>
+      <a href="#games" data-i18n="nav.games">Games</a>
+      <a href="#how" data-i18n="nav.how">How we work</a>
+      <a class="btn btn-ink" href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <span class="label in" data-i18n="hero.label">Mobile game studio · Istanbul</span>
+        <h1 class="in" style="animation-delay:.08s" data-i18n="hero.title">We make games people come back to<span class="dot">.</span></h1>
+        <p class="in" style="animation-delay:.16s" data-i18n="hero.text">Veyroc is an independent studio designing and building polished puzzle and casual games for iOS and Android, for players around the world.</p>
+        <div class="ctas in" style="animation-delay:.24s">
+          <a class="btn btn-ink" href="#contact"><span data-i18n="hero.cta1">Work with us</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#about" data-i18n="hero.cta2">About the studio</a>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div class="grid">
+          <b class="k" style="--i:0"></b><b style="--i:1"></b><b class="w" style="--i:2"></b>
+          <b class="t" style="--i:3"></b><b class="c" style="--i:4"></b><b class="o" style="--i:5"></b><b class="k" style="--i:6"></b>
+          <b class="w k" style="--i:7"></b><b style="--i:8"></b>
+          <b class="o" style="--i:9"></b><b style="--i:10"></b><b class="k" style="--i:11"></b><b class="c" style="--i:12"></b>
+        </div>
+        <span class="float"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="rule">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label" data-i18n="about.label">About</span><h2 data-i18n="about.title">A small studio with a big focus on craft.</h2></div>
+        <div class="text">
+          <p class="big" data-i18n="about.big">Veyroc was founded in Istanbul to make mobile games that feel simple on the surface and deep underneath.</p>
+          <p data-i18n="about.text">We handle the whole journey in-house: the idea, the game design, the art direction, the code, store launch and every update after it. Each game is built to run smoothly on a wide range of phones, released in many languages and supported for the long term.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><b data-i18n="f1b">iOS + Android</b><span data-i18n="f1">Every release ships on both platforms</span></div>
+        <div class="fact"><b data-i18n="f2b">15 languages</b><span data-i18n="f2">Store pages localised for global players</span></div>
+        <div class="fact"><b data-i18n="f3b">Istanbul</b><span data-i18n="f3">Independent studio, founded 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="what" class="rule">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label" data-i18n="what.label">What we do</span><h2 data-i18n="what.title">From first idea to launch day and beyond.</h2></div>
+        <div class="text"><p class="big" data-i18n="what.big">We focus on puzzle and casual games: short sessions, clear rules and the satisfying feeling of getting it right.</p></div>
+      </div>
+      <div class="cards">
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2" fill="#f0876a" stroke="#f0876a"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></div><h3 data-i18n="c1h">Game design</h3><p data-i18n="c1p">Mechanics, level design and difficulty curves tested with real players before launch.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.4" fill="#f0876a" stroke="none"/><circle cx="12" cy="7.5" r="1.4" fill="#111114" stroke="none"/><circle cx="15.5" cy="10" r="1.4" fill="#111114" stroke="none"/><path d="M12 21c-1.5-2 0-4 2-4h2"/></svg></div><h3 data-i18n="c2h">Art &amp; sound</h3><p data-i18n="c2p">A distinct visual style and audio identity for every game, from icon to final effect.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/><path d="M14 4l-4 16" stroke="#f0876a"/></svg></div><h3 data-i18n="c3h">Engineering</h3><p data-i18n="c3p">Fast, lightweight builds for iOS and Android that run well on older devices too.</p></div>
+        <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7"/><path d="M20 19v-4" stroke="#f0876a"/></svg></div><h3 data-i18n="c4h">Launch &amp; live ops</h3><p data-i18n="c4p">Store pages in 15 languages, fair ad design, steady updates and player support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="rule">
+    <div class="wrap">
+      <div class="gtitle"><h2 data-i18n="gm.title">Games</h2><i></i></div>
+      <div class="games">
+        <article class="gcard">
+          <a class="cover" href="bassburst/play/" aria-label="Play Bass Burst in your browser">
+            <img src="img/bb_cover.webp" alt="Bass Burst: neon music blocks on a festival stage" width="1400" height="939" loading="lazy">          </a>
+          <img class="gicon" src="img/bb_icon.png" alt="" width="96" height="96" loading="lazy">
+          <h3>Bass Burst!</h3>
+          <div class="genre" data-i18n="bb.genre">Musical Block Puzzle</div>
+          <p class="gdesc" data-i18n="bb.desc">Place colourful blocks, clear full lines and let every move play the beat. Chain combos, unlock glowing new stages and chase your best score.</p>
+          <a class="btn btn-ink playnow" href="bassburst/play/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg><span data-i18n="bb.play">Play now in your browser</span></a>
+          <div class="badges">
+            <div class="badge" aria-label="App Store, coming soon"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.18-1.53 2.66-.39 6.59 1.1 8.75.73 1.05 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.32-3.53zM14.2 6.13c.6-.74 1.02-1.76.9-2.78-.87.04-1.94.58-2.57 1.32-.56.65-1.06 1.7-.93 2.7.98.08 1.98-.5 2.6-1.24z"/></svg><span><small data-i18n="bd.as1">Download on the</small><b>App Store</b></span><em class="soon" data-i18n="soon">Coming soon</em></div>
+            <div class="badge" aria-label="Google Play, coming soon"><svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.3v16.8c0 .6.1 1 .4 1.3l9.4-9.7z" fill="#00d7fe"/><path d="M16.1 15.1L13 12l3.1-3.1 3.8 2.2c1.1.6 1.1 1.6 0 2.2z" fill="#ffce00"/><path d="M16.1 15.1L13 12l-9.4 9.7c.4.4.9.4 1.6.1z" fill="#f63448"/><path d="M16.1 8.9L5.2 2.2c-.7-.4-1.2-.3-1.6.1L13 12z" fill="#00f076"/></svg><span><small data-i18n="bd.gp1">GET IT ON</small><b>Google Play</b></span><em class="soon" data-i18n="soon2">Coming soon</em></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="rule">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label" data-i18n="how.label">How we work</span><h2 data-i18n="how.title">Play it first. Then make it great.</h2></div>
+        <div class="text"><p class="big" data-i18n="how.big">Every game we ship goes through the same four steps. Ideas that are not fun in the first playable version don't move forward.</p></div>
+      </div>
+      <ol class="steps">
+        <li><small data-i18n="s1k">Explore</small><h3 data-i18n="s1h">Idea</h3><p data-i18n="s1p">We study what players love and look for a fresh twist on a proven mechanic.</p></li>
+        <li><small data-i18n="s2k">Prototype</small><h3 data-i18n="s2h">Playable</h3><p data-i18n="s2p">Within days the idea becomes a playable build we can test and judge honestly.</p></li>
+        <li><small data-i18n="s3k">Polish</small><h3 data-i18n="s3h">Craft</h3><p data-i18n="s3p">Art, sound, levels and feel are refined until every move feels satisfying.</p></li>
+        <li><small data-i18n="s4k">Launch</small><h3 data-i18n="s4h">Live</h3><p data-i18n="s4p">Release on the App Store and Google Play, then listen, measure and improve.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="rule">
+    <div class="wrap">
+      <div class="gtitle"><h2 data-i18n="ct.title">Get in touch</h2><i></i></div>
+      <form class="formcard" id="cform" novalidate>
+        <div class="sel" id="sel">
+          <button type="button" id="selBtn" aria-haspopup="listbox" aria-expanded="false"><span id="selTxt" data-i18n="f.subject">Select subject</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul role="listbox" id="selList">
+            <li><button type="button" data-v="o1" data-i18n="f.o1">Player support</button></li>
+            <li><button type="button" data-v="o2" data-i18n="f.o2">Advertising</button></li>
+            <li><button type="button" data-v="o3" data-i18n="f.o3">Partnership</button></li>
+            <li><button type="button" data-v="o4" data-i18n="f.o4">Media inquiry</button></li>
+          </ul>
+        </div>
+        <div class="field"><label for="fname" data-i18n="f.name">* Name</label><input id="fname" name="name" autocomplete="name"></div>
+        <div class="field"><label for="femail" data-i18n="f.email">* Email</label><input id="femail" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="fmsg" data-i18n="f.msg">* Message</label><textarea id="fmsg" name="message"></textarea></div>
+        <p class="fmsg" id="fout" role="status"></p>
+        <button class="btn send" type="submit" data-i18n="f.send">Send</button>
+        <p class="fnote"><span data-i18n="f.or">Or write to us directly:</span> <a href="mailto:info@veyrocgames.com">info@veyrocgames.com</a></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-black.png" alt="veyroc" width="1354" height="322" loading="lazy">
+    <span data-i18n="foot">© 2026 Veyroc Games · Istanbul, Türkiye</span>
+    <nav><a href="bassburst/privacy.html" data-i18n="priv">Privacy Policy</a><a href="bassburst/terms.html" data-i18n="terms">Terms of Use</a></nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+const I18N = {
+en:null,
+tr:{"nav.games": "Oyunlar", "gm.title": "Oyunlar", "bb.genre": "Müzikli Blok Bulmaca", "bb.desc": "Renkli blokları yerleştir, dolu satırları temizle ve her hamlende ritmi çal. Kombolar yap, parıldayan yeni sahnelerin kilidini aç ve en yüksek skorunun peşine düş.", "bb.play": "Tarayıcıda hemen oyna", "bd.as1": "App Store'dan", "bd.gp1": "HEMEN İNDİRİN", "soon": "Çok yakında", "soon2": "Çok yakında", "ct.title": "Bize ulaşın", "f.subject": "Konu seçin", "f.o1": "Oyuncu desteği", "f.o2": "Reklam", "f.o3": "İş birliği", "f.o4": "Basın", "f.name": "* Ad Soyad", "f.email": "* E-posta", "f.msg": "* Mesaj", "f.send": "Gönder", "f.or": "Ya da doğrudan yazın:", "f.ok": "E-posta uygulamanız mesajınızla birlikte açılıyor.", "f.err": "Lütfen konu seçin ve tüm alanları doldurun.","nav.about":"Hakkımızda","nav.what":"Neler yapıyoruz","nav.how":"Nasıl çalışıyoruz","nav.contact":"İletişim",
+"hero.label":"Mobil oyun stüdyosu · İstanbul","hero.title":"Oyuncuların tekrar tekrar döndüğü oyunlar yapıyoruz",
+"hero.text":"Veyroc, iOS ve Android için özenle tasarlanmış bulmaca ve casual oyunlar geliştiren, dünyanın dört bir yanındaki oyunculara ulaşan bağımsız bir stüdyodur.",
+"hero.cta1":"Bizimle çalışın","hero.cta2":"Stüdyoyu tanıyın",
+"about.label":"Hakkımızda","about.title":"Küçük bir stüdyo, büyük bir özen.","about.big":"Veyroc, ilk bakışta sade, derinlerinde ise zengin mobil oyunlar yapmak için İstanbul'da kuruldu.",
+"about.text":"Fikirden oyun tasarımına, sanat yönetiminden koda, mağaza lansmanından sonraki her güncellemeye kadar tüm süreci kendimiz yürütüyoruz. Her oyunumuz çok çeşitli telefonlarda akıcı çalışacak şekilde geliştirilir, birçok dilde yayınlanır ve uzun yıllar desteklenir.",
+"f1b":"iOS + Android","f1":"Her sürüm iki platformda birden yayınlanır","f2b":"15 dil","f2":"Dünyanın her yerindeki oyuncular için yerelleştirilmiş mağaza sayfaları","f3b":"İstanbul","f3":"Bağımsız stüdyo, 2026'da kuruldu",
+"what.label":"Neler yapıyoruz","what.title":"İlk fikirden lansmana ve sonrasına.","what.big":"Bulmaca ve casual oyunlara odaklanıyoruz: kısa oturumlar, net kurallar ve doğru hamleyi bulmanın verdiği o tatmin edici his.",
+"c1h":"Oyun tasarımı","c1p":"Mekanikler, bölüm tasarımı ve zorluk eğrileri, yayından önce gerçek oyuncularla test edilir.",
+"c2h":"Görsel ve ses","c2p":"İkondan son efekte kadar her oyun için kendine özgü bir görsel stil ve ses kimliği.",
+"c3h":"Yazılım","c3p":"iOS ve Android için hızlı, hafif ve eski cihazlarda da akıcı çalışan sürümler.",
+"c4h":"Lansman ve canlı operasyon","c4p":"15 dilde mağaza sayfaları, adil reklam tasarımı, düzenli güncellemeler ve oyuncu desteği.",
+"how.label":"Nasıl çalışıyoruz","how.title":"Önce oyna. Sonra mükemmelleştir.","how.big":"Yayınladığımız her oyun aynı dört adımdan geçer. İlk oynanabilir sürümde eğlenceli olmayan fikirler bir sonraki aşamaya geçmez.",
+"s1k":"Keşif","s1h":"Fikir","s1p":"Oyuncuların neyi sevdiğini inceler, kanıtlanmış bir mekaniğe yeni bir bakış ararız.",
+"s2k":"Prototip","s2h":"Oynanabilir","s2p":"Fikir birkaç gün içinde test edip dürüstçe değerlendirebileceğimiz oynanabilir bir sürüme dönüşür.",
+"s3k":"Cilalama","s3h":"Zanaat","s3p":"Görseller, sesler, bölümler ve oyun hissi her hamle keyif verene kadar geliştirilir.",
+"s4k":"Lansman","s4h":"Yayında","s4p":"App Store ve Google Play'de yayınlar, ardından dinler, ölçer ve geliştiririz.",
+"ct.label":"İletişim","ct.text":"İş birlikleri, yayıncılık, reklam, basın veya oyuncu desteği. Her mesajı okuyor ve en kısa sürede yanıtlıyoruz.",
+"copy":"E-postayı kopyala","copied":"Kopyalandı","t1":"İş birlikleri","t2":"Yayıncılık","t3":"Reklam","t4":"Basın","t5":"Oyuncu desteği",
+"foot":"© 2026 Veyroc Games · İstanbul, Türkiye","priv":"Gizlilik Politikası","terms":"Kullanım Şartları"},
+de:{"nav.games": "Spiele", "gm.title": "Spiele", "bb.genre": "Musikalisches Block-Puzzle", "bb.desc": "Setze bunte Blöcke, räume volle Reihen ab und lass jeden Zug den Beat spielen. Baue Kombos auf, schalte leuchtende neue Bühnen frei und jage deinen Highscore.", "bb.play": "Jetzt im Browser spielen", "bd.as1": "Laden im", "bd.gp1": "JETZT BEI", "soon": "Demnächst", "soon2": "Demnächst", "ct.title": "Kontakt aufnehmen", "f.subject": "Thema auswählen", "f.o1": "Spielersupport", "f.o2": "Werbung", "f.o3": "Partnerschaft", "f.o4": "Presseanfrage", "f.name": "* Name", "f.email": "* E-Mail", "f.msg": "* Nachricht", "f.send": "Senden", "f.or": "Oder schreib uns direkt:", "f.ok": "Dein E-Mail-Programm öffnet sich mit deiner Nachricht.", "f.err": "Bitte wähle ein Thema und fülle alle Felder aus.","nav.about":"Über uns","nav.what":"Was wir tun","nav.how":"Wie wir arbeiten","nav.contact":"Kontakt",
+"hero.label":"Mobile-Game-Studio · Istanbul","hero.title":"Wir machen Spiele, zu denen man immer wieder zurückkehrt",
+"hero.text":"Veyroc ist ein unabhängiges Studio, das liebevoll gestaltete Puzzle- und Casual-Games für iOS und Android entwickelt – für Spielerinnen und Spieler auf der ganzen Welt.",
+"hero.cta1":"Mit uns arbeiten","hero.cta2":"Das Studio kennenlernen",
+"about.label":"Über uns","about.title":"Ein kleines Studio mit großem Anspruch an Qualität.","about.big":"Veyroc wurde in Istanbul gegründet, um Mobile Games zu entwickeln, die an der Oberfläche einfach und darunter tiefgründig sind.",
+"about.text":"Wir übernehmen den gesamten Weg selbst: die Idee, das Game Design, die Art Direction, den Code, den Store-Launch und jedes Update danach. Jedes Spiel läuft flüssig auf einer großen Bandbreite von Smartphones, erscheint in vielen Sprachen und wird langfristig betreut.",
+"f1b":"iOS + Android","f1":"Jede Veröffentlichung auf beiden Plattformen","f2b":"15 Sprachen","f2":"Lokalisierte Store-Seiten für Spieler weltweit","f3b":"Istanbul","f3":"Unabhängiges Studio, gegründet 2026",
+"what.label":"Was wir tun","what.title":"Von der ersten Idee bis zum Launch und darüber hinaus.","what.big":"Unser Fokus liegt auf Puzzle- und Casual-Games: kurze Sessions, klare Regeln und das zufriedene Gefühl, den richtigen Zug gefunden zu haben.",
+"c1h":"Game Design","c1p":"Mechaniken, Level-Design und Schwierigkeitskurven, vor dem Launch mit echten Spielern getestet.",
+"c2h":"Grafik & Sound","c2p":"Ein eigener visueller Stil und eine eigene Klangidentität für jedes Spiel, vom Icon bis zum letzten Effekt.",
+"c3h":"Entwicklung","c3p":"Schnelle, schlanke Builds für iOS und Android, die auch auf älteren Geräten gut laufen.",
+"c4h":"Launch & Live-Betrieb","c4p":"Store-Seiten in 15 Sprachen, faires Anzeigendesign, regelmäßige Updates und Spielersupport.",
+"how.label":"Wie wir arbeiten","how.title":"Erst spielen. Dann großartig machen.","how.big":"Jedes Spiel durchläuft dieselben vier Schritte. Ideen, die schon in der ersten spielbaren Version keinen Spaß machen, gehen nicht weiter.",
+"s1k":"Erkunden","s1h":"Idee","s1p":"Wir untersuchen, was Spieler lieben, und suchen nach einem neuen Dreh für eine bewährte Mechanik.",
+"s2k":"Prototyp","s2h":"Spielbar","s2p":"Innerhalb weniger Tage wird die Idee zu einer spielbaren Version, die wir ehrlich testen und bewerten.",
+"s3k":"Feinschliff","s3h":"Handwerk","s3p":"Grafik, Sound, Level und Spielgefühl werden verfeinert, bis sich jeder Zug gut anfühlt.",
+"s4k":"Launch","s4h":"Live","s4p":"Veröffentlichung im App Store und bei Google Play, danach zuhören, messen und verbessern.",
+"ct.label":"Kontakt","ct.text":"Partnerschaften, Publishing, Werbung, Presse oder Spielersupport. Wir lesen jede Nachricht und antworten so schnell wie möglich.",
+"copy":"E-Mail kopieren","copied":"Kopiert","t1":"Partnerschaften","t2":"Publishing","t3":"Werbung","t4":"Presse","t5":"Spielersupport",
+"foot":"© 2026 Veyroc Games · Istanbul, Türkei","priv":"Datenschutzerklärung","terms":"Nutzungsbedingungen"},
+es:{"nav.games": "Juegos", "gm.title": "Juegos", "bb.genre": "Puzle musical de bloques", "bb.desc": "Coloca bloques de colores, completa líneas y deja que cada jugada marque el ritmo. Encadena combos, desbloquea nuevos escenarios brillantes y supera tu mejor puntuación.", "bb.play": "Jugar ahora en el navegador", "bd.as1": "Descárgalo en el", "bd.gp1": "DISPONIBLE EN", "soon": "Próximamente", "soon2": "Próximamente", "ct.title": "Contacta con nosotros", "f.subject": "Selecciona un asunto", "f.o1": "Soporte al jugador", "f.o2": "Publicidad", "f.o3": "Colaboración", "f.o4": "Prensa", "f.name": "* Nombre", "f.email": "* Correo electrónico", "f.msg": "* Mensaje", "f.send": "Enviar", "f.or": "O escríbenos directamente:", "f.ok": "Se está abriendo tu aplicación de correo con el mensaje.", "f.err": "Selecciona un asunto y completa todos los campos.","nav.about":"Nosotros","nav.what":"Qué hacemos","nav.how":"Cómo trabajamos","nav.contact":"Contacto",
+"hero.label":"Estudio de juegos móviles · Estambul","hero.title":"Creamos juegos a los que la gente siempre vuelve",
+"hero.text":"Veyroc es un estudio independiente que diseña y desarrolla juegos de puzles y casuales cuidados al detalle para iOS y Android, para jugadores de todo el mundo.",
+"hero.cta1":"Trabaja con nosotros","hero.cta2":"Conoce el estudio",
+"about.label":"Nosotros","about.title":"Un estudio pequeño con una gran pasión por el detalle.","about.big":"Veyroc nació en Estambul para crear juegos móviles sencillos a primera vista y profundos por dentro.",
+"about.text":"Nos encargamos de todo el proceso: la idea, el diseño del juego, la dirección de arte, el código, el lanzamiento en las tiendas y cada actualización posterior. Cada juego funciona con fluidez en una gran variedad de teléfonos, se publica en muchos idiomas y recibe soporte a largo plazo.",
+"f1b":"iOS + Android","f1":"Cada lanzamiento llega a ambas plataformas","f2b":"15 idiomas","f2":"Fichas de tienda localizadas para jugadores de todo el mundo","f3b":"Estambul","f3":"Estudio independiente, fundado en 2026",
+"what.label":"Qué hacemos","what.title":"De la primera idea al lanzamiento y más allá.","what.big":"Nos centramos en juegos de puzles y casuales: partidas cortas, reglas claras y la satisfacción de dar con la jugada correcta.",
+"c1h":"Diseño de juego","c1p":"Mecánicas, diseño de niveles y curvas de dificultad probadas con jugadores reales antes del lanzamiento.",
+"c2h":"Arte y sonido","c2p":"Un estilo visual y una identidad sonora propios para cada juego, del icono al último efecto.",
+"c3h":"Ingeniería","c3p":"Versiones rápidas y ligeras para iOS y Android que funcionan bien incluso en dispositivos antiguos.",
+"c4h":"Lanzamiento y operación","c4p":"Fichas de tienda en 15 idiomas, anuncios justos, actualizaciones constantes y atención a los jugadores.",
+"how.label":"Cómo trabajamos","how.title":"Primero se juega. Luego se perfecciona.","how.big":"Cada juego que publicamos pasa por los mismos cuatro pasos. Las ideas que no son divertidas en la primera versión jugable no avanzan.",
+"s1k":"Explorar","s1h":"Idea","s1p":"Estudiamos lo que les encanta a los jugadores y buscamos un giro nuevo para una mecánica probada.",
+"s2k":"Prototipo","s2h":"Jugable","s2p":"En pocos días la idea se convierte en una versión jugable que podemos probar y evaluar con honestidad.",
+"s3k":"Pulido","s3h":"Oficio","s3p":"Arte, sonido, niveles y sensaciones se pulen hasta que cada jugada resulta satisfactoria.",
+"s4k":"Lanzamiento","s4h":"En vivo","s4p":"Publicamos en App Store y Google Play, y después escuchamos, medimos y mejoramos.",
+"ct.label":"Contacto","ct.text":"Alianzas, publicación, publicidad, prensa o soporte para jugadores. Leemos cada mensaje y respondemos lo antes posible.",
+"copy":"Copiar correo","copied":"Copiado","t1":"Alianzas","t2":"Publicación","t3":"Publicidad","t4":"Prensa","t5":"Soporte",
+"foot":"© 2026 Veyroc Games · Estambul, Turquía","priv":"Política de privacidad","terms":"Términos de uso"},
+ja:{"nav.games": "ゲーム", "gm.title": "ゲーム", "bb.genre": "音楽ブロックパズル", "bb.desc": "カラフルなブロックを置いて列をそろえれば、一手ごとにビートが鳴ります。コンボをつなげ、輝く新しいステージを解放して、ハイスコアを目指しましょう。", "bb.play": "ブラウザで今すぐプレイ", "bd.as1": "App Storeから", "bd.gp1": "GET IT ON", "soon": "近日公開", "soon2": "近日公開", "ct.title": "お問い合わせ", "f.subject": "件名を選択", "f.o1": "プレイヤーサポート", "f.o2": "広告", "f.o3": "提携", "f.o4": "取材", "f.name": "* お名前", "f.email": "* メールアドレス", "f.msg": "* メッセージ", "f.send": "送信", "f.or": "メールでも受け付けています：", "f.ok": "メールアプリがメッセージ入りで開きます。", "f.err": "件名を選び、すべての項目を入力してください。","nav.about":"会社概要","nav.what":"事業内容","nav.how":"制作の流れ","nav.contact":"お問い合わせ",
+"hero.label":"モバイルゲームスタジオ · イスタンブール","hero.title":"何度でも遊びたくなるゲームを",
+"hero.text":"Veyroc は、iOS と Android 向けに、丁寧に作り込んだパズルゲームとカジュアルゲームを開発する独立系スタジオです。世界中のプレイヤーに届けています。",
+"hero.cta1":"お仕事のご相談","hero.cta2":"スタジオについて",
+"about.label":"会社概要","about.title":"小さなスタジオの、大きなこだわり。","about.big":"Veyroc は、見た目はシンプルで、遊ぶほど奥が深いモバイルゲームを作るためにイスタンブールで誕生しました。",
+"about.text":"アイデア、ゲームデザイン、アートディレクション、プログラム、ストアでのリリース、そしてその後のアップデートまで、すべてを自社で行っています。どのゲームも幅広い端末で快適に動作し、多言語で配信され、長く運営されます。",
+"f1b":"iOS + Android","f1":"すべての作品を両プラットフォームで配信","f2b":"15 言語","f2":"世界中のプレイヤー向けにローカライズしたストアページ","f3b":"イスタンブール","f3":"2026 年設立の独立系スタジオ",
+"what.label":"事業内容","what.title":"最初のアイデアから、リリースのその先まで。","what.big":"短い時間で遊べて、ルールが分かりやすく、正解を見つけたときに気持ちいい。そんなパズル・カジュアルゲームに注力しています。",
+"c1h":"ゲームデザイン","c1p":"メカニクス、レベルデザイン、難易度カーブを、リリース前に実際のプレイヤーと検証します。",
+"c2h":"アート・サウンド","c2p":"アイコンから最後のエフェクトまで、作品ごとに独自のビジュアルとサウンドを。",
+"c3h":"エンジニアリング","c3p":"古い端末でも快適に動く、軽量で高速な iOS・Android 向けビルド。",
+"c4h":"リリース・運営","c4p":"15 言語のストアページ、公正な広告設計、継続的なアップデートとサポート。",
+"how.label":"制作の流れ","how.title":"まず遊ぶ。それから磨き上げる。","how.big":"すべての作品は同じ 4 つのステップを経ます。最初の試作で面白くないアイデアは、次に進みません。",
+"s1k":"探求","s1h":"アイデア","s1p":"プレイヤーが愛するものを研究し、定番のメカニクスに新しいひねりを探します。",
+"s2k":"試作","s2h":"プレイアブル","s2p":"数日のうちにアイデアを遊べる形にし、正直にテスト・評価します。",
+"s3k":"磨き込み","s3h":"クラフト","s3p":"アート、サウンド、レベル、手触りを、一手一手が心地よくなるまで磨きます。",
+"s4k":"リリース","s4h":"ライブ","s4p":"App Store と Google Play で配信し、声を聞き、数字を見て、改善を続けます。",
+"ct.label":"お問い合わせ","ct.text":"提携、パブリッシング、広告、取材、プレイヤーサポートなど。すべてのメッセージに目を通し、できるだけ早くお返事します。",
+"copy":"メールをコピー","copied":"コピーしました","t1":"提携","t2":"パブリッシング","t3":"広告","t4":"取材","t5":"プレイヤーサポート",
+"foot":"© 2026 Veyroc Games · トルコ、イスタンブール","priv":"プライバシーポリシー","terms":"利用規約"}
+};
+const NAMES = { en: 'EN', tr: 'TR', de: 'DE', es: 'ES', ja: 'JA' };
+const nodes = [...document.querySelectorAll('[data-i18n]')];
+const EN = {}; nodes.forEach(el => { const t = [...el.childNodes].find(n => n.nodeType === 3); EN[el.dataset.i18n] = t ? t.nodeValue : ''; }); EN.copied = 'Copied'; Object.assign(EN, { 'f.ok': 'Your email app is opening with your message.', 'f.err': 'Please choose a subject and fill in all fields.' });
+let cur = 'en';
+function setLang(l){
+  if (!(l in I18N)) l = 'en'; cur = l; const d = I18N[l] || EN;
+  nodes.forEach(el => { const k = el.dataset.i18n, v = d[k] ?? EN[k]; const t = [...el.childNodes].find(n => n.nodeType === 3); if (t) t.nodeValue = v; else el.prepend(v); });
+  document.documentElement.lang = l; document.documentElement.setAttribute('translate', 'no');
+  document.getElementById('langCode').textContent = NAMES[l];
+  document.getElementById('langFlag').innerHTML = document.querySelector(`#langList button[data-l="${l}"] .flag`).innerHTML.replace(/id="fgb(2?)"/g,'id="fgbh$1"').replace(/#fgb(2?)\)/g,'#fgbh$1)');
+  document.querySelectorAll('#langList button').forEach(b => b.setAttribute('aria-current', b.dataset.l === l));
+  if (l === 'ja' && !document.getElementById('jaFont')){ const k = document.createElement('link'); k.id = 'jaFont'; k.rel = 'stylesheet'; k.href = 'https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap'; document.head.appendChild(k); }
+  try { localStorage.setItem('vg_lang', l); } catch (e) {}
+}
+let saved = null; try { saved = localStorage.getItem('vg_lang'); } catch (e) {}
+const guess = (navigator.language || 'en').slice(0, 2).toLowerCase();
+setLang(saved || (guess in I18N ? guess : 'en'));
+const lang = document.getElementById('lang'), lbtn = document.getElementById('langBtn');
+lbtn.addEventListener('click', e => { e.stopPropagation(); const o = lang.classList.toggle('open'); lbtn.setAttribute('aria-expanded', o); });
+document.querySelectorAll('#langList button').forEach(b => b.addEventListener('click', () => { setLang(b.dataset.l); lang.classList.remove('open'); lbtn.setAttribute('aria-expanded', false); }));
+document.addEventListener('click', () => { lang.classList.remove('open'); lbtn.setAttribute('aria-expanded', false); });
+
+  const nav = document.getElementById('nav'), menu = document.getElementById('menu'), burger = document.getElementById('burger');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 10); onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+  const EXTRA = { "f.ok":"Your email app is opening with your message.", "f.err":"Please choose a subject and fill in all fields." };
+  const tx = k => ((I18N[cur] || {})[k]) ?? EN[k] ?? EXTRA[k];
+  const sel = document.getElementById('sel'), selBtn = document.getElementById('selBtn'), selTxt = document.getElementById('selTxt');
+  let subject = null;
+  const showSubject = () => { if (subject) selTxt.textContent = tx('f.' + subject); };
+  selBtn.addEventListener('click', e => { e.stopPropagation(); const o = sel.classList.toggle('open'); selBtn.setAttribute('aria-expanded', o); });
+  document.querySelectorAll('#selList button').forEach(b => b.addEventListener('click', () => { subject = b.dataset.v; showSubject(); sel.classList.remove('open', 'bad'); selBtn.setAttribute('aria-expanded', false); selBtn.focus(); }));
+  document.addEventListener('click', () => { sel.classList.remove('open'); selBtn.setAttribute('aria-expanded', false); });
+  document.querySelectorAll('#langList button').forEach(b => b.addEventListener('click', () => setTimeout(showSubject)));
+  const form = document.getElementById('cform'), out = document.getElementById('fout');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const E = form.elements, f = { name: E['name'].value.trim(), email: E['email'].value.trim(), message: E['message'].value.trim() };
+    let ok = !!subject; sel.classList.toggle('bad', !subject);
+    for (const k of ['name', 'email', 'message']){ const bad = !f[k] || (k === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f[k])); E[k].closest('.field').classList.toggle('bad', bad); if (bad) ok = false; }
+    if (!ok){ out.className = 'fmsg err'; out.textContent = tx('f.err'); return; }
+    const subj = `[${EN['f.' + subject]}] ${f.name}`, body = `${f.message}\n\n${f.name}\n${f.email}`;
+    out.className = 'fmsg ok'; out.textContent = tx('f.ok');
+    location.href = `mailto:info@veyrocgames.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  });
+  form.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', () => el.closest('.field').classList.remove('bad')));
+})();
+</script>
+</body>
+</html>
